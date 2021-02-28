@@ -1,5 +1,4 @@
 from kivymd.app import MDApp
-from kivy.lang import Builder
 # from kivy.core.window import Window
 from kivy.uix.screenmanager import ScreenManager, Screen, ObjectProperty, StringProperty
 from kivymd.uix.menu import MDDropdownMenu
@@ -8,7 +7,6 @@ from kivymd.uix.button import MDFlatButton
 from kivymd.uix.card import MDCardSwipe
 from kivymd.uix.snackbar import Snackbar
 from kivy.metrics import dp
-from kv import KV
 
 
 # Window.size = (245, 480)
@@ -40,7 +38,7 @@ sm.add_widget(DoneScreen(name='done'))
 sm.add_widget(NewTaskScreen(name='new_task'))
 
 
-class PhoneApp(MDApp):
+class DoTaskApp(MDApp):
     title = 'DoTask'
 
     def __init__(self, **kwargs):
@@ -57,8 +55,6 @@ class PhoneApp(MDApp):
         self.theme_cls.primary_palette = "DeepOrange"
         self.theme_cls.primary_hue = "700"
         self.theme_cls.theme_style = "Dark"
-
-        return Builder.load_string(KV)
 
     def on_start(self):
         # Make self.todo_list and self.done_list draw in screens
@@ -149,4 +145,4 @@ class PhoneApp(MDApp):
 
 
 if __name__ == '__main__':
-    PhoneApp().run()
+    DoTaskApp().run()
