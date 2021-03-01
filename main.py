@@ -1,6 +1,6 @@
 from kivymd.app import MDApp
-# from kivy.core.window import Window
-from kivy.uix.screenmanager import ScreenManager, Screen, ObjectProperty, StringProperty
+from kivy.core.window import Window
+from kivy.uix.screenmanager import ScreenManager, Screen, StringProperty
 from kivymd.uix.menu import MDDropdownMenu
 from kivymd.uix.dialog import MDDialog
 from kivymd.uix.button import MDFlatButton
@@ -8,8 +8,8 @@ from kivymd.uix.card import MDCardSwipe
 from kivymd.uix.snackbar import Snackbar
 from kivy.metrics import dp
 
-
-# Window.size = (245, 480)
+# Uncomment this if want deploy this app
+Window.size = (245, 480)
 
 
 class ToDoScreen(Screen):
@@ -43,12 +43,11 @@ class DoTaskApp(MDApp):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.menu = ObjectProperty()
         self.menu_items = []
         self.todo_list = []
         self.done_list = []
-        self.nav_bar_items = {}
         self.dialog = None
+        self.menu = None
 
     def build(self):
 
