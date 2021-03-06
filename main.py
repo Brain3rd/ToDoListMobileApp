@@ -32,22 +32,22 @@ class SwipeToDeleteItem(MDCardSwipe):
     text = StringProperty()
 
 
-sm = ScreenManager()
-sm.add_widget(ToDoScreen(name='todo'))
-sm.add_widget(DoneScreen(name='done'))
-sm.add_widget(NewTaskScreen(name='new_task'))
-
-
 class DoTaskApp(MDApp):
     title = 'DoTask'
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.menu_items = []
+        self.menu_item = ''
         self.todo_list = []
         self.done_list = []
         self.dialog = None
         self.menu = None
+
+        self.sm = ScreenManager()
+        self.sm.add_widget(ToDoScreen(name='todo'))
+        self.sm.add_widget(DoneScreen(name='done'))
+        self.sm.add_widget(NewTaskScreen(name='new_task'))
 
     def build(self):
 
@@ -63,8 +63,8 @@ class DoTaskApp(MDApp):
         self.root.ids.screen_manager.current = 'new_task'
 
         # Draw about list
-        menu_item = {'text': 'About'}
-        self.menu_items.append(menu_item)
+        self.menu_item = {'text': 'About'}
+        self.menu_items.append(self.menu_item)
         self.menu = MDDropdownMenu(items=self.menu_items, width_mult=2)
         self.menu.bind(on_release=self.menu_callback)
 
